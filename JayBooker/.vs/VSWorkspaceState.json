@@ -4,14 +4,8 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\dashboard",
-    "\\src\\app\\login",
-    "\\src\\app\\masks",
-    "\\src\\app\\models",
-    "\\src\\app\\single-user",
-    "\\src\\app\\users",
-    "\\src\\assets",
-    "\\src\\assets\\js"
+    "\\src\\app\\login"
   ],
-  "SelectedNode": "\\src\\assets\\js\\off-canvas.js",
+  "SelectedNode": "\\src\\app\\login\\login.component.ts",
   "PreviewInSolutionExplorer": false
 }

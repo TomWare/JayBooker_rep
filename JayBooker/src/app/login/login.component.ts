@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
-import { LoginModel } from '../models/LoginModel';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
+import { User } from '../single-user/single-user.component';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +11,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginModel: LoginModel = new LoginModel();
-  constructor(public app:AppComponent, private data: DataService, private router:Router) { }
+  loginModel: User = new User();
+  constructor(private auth:AuthenticationService,private data: DataService, private router:Router) { }
 
   ngOnInit() {
   }
 
   login() {
-    this.app.logged = true;
-    this.router.navigate(['tableau-de-bord']);
+   this.auth.login(this.loginModel)
     //console.log(this.loginModel);
     //this.data.post('logins',this.loginModel).subscribe((res: boolean) => {
     //  if (res) {
