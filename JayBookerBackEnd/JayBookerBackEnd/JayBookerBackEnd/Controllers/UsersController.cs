@@ -80,6 +80,7 @@ namespace JayBookerBackEnd.Controllers
             {
                 return BadRequest(ModelState);
             }
+
             var userExists = db.Users.Where(t => t.UserName == users.UserName);
             if (userExists.Count() > 0)
             {
@@ -88,6 +89,9 @@ namespace JayBookerBackEnd.Controllers
 
 
          
+
+
+            
 
             users.UserCreatedOn = DateTime.Now;
             db.Users.Add(users);
