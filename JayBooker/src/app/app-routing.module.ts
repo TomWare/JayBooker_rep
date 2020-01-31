@@ -32,7 +32,7 @@ import { SingleSeasonComponent } from './single-season/single-season.component';
 const routes: Routes = [
   {
     path: "",
-    component:LoginComponent
+    component: DashboardComponent
   },
   {
     path: "tableau-de-bord",

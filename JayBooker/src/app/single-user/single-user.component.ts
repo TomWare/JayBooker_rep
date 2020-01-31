@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MustMatch } from '../models/MustMatch';
 import { DataService } from '../data.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { EncrDecrService } from '../encr-decr.service';
 
 @Component({
@@ -16,12 +16,14 @@ export class SingleUserComponent implements OnInit {
   newUser = new User();
   users: Array<User>;
 
+  //récupérer id pour iffer private route:ActivatedRoute
 
-  constructor(private formBuilder: FormBuilder, private data: DataService, private router: Router, private EncrDecr: EncrDecrService) {
+  constructor(private formBuilder: FormBuilder, private data: DataService, private router: Router, private EncrDecr: EncrDecrService, private route:ActivatedRoute) {
     this.data.getAll('users').subscribe((res: Array<User>) => {
       this.users = res;
-      console.log(this.users);
+      //console.log(this.users);
     })
+
   }
 
   ngOnInit() {
@@ -84,7 +86,9 @@ export class SingleUserComponent implements OnInit {
     this.data.put('users', this.newUser).subscribe((res: User) => {
       alert('Utilisateur ajouté!\n\n DERNIÈRE CHANCE DE PRENDRE LE MOT DE PASSE EN NOTE!\n\n' + JSON.stringify(this.registerForm.value, null, 4));
       this.router.navigate(['utilisateurs']);      
-    })
+    }, err => {
+      console.log(err.error.Message);
+      })
   }
   onReset() {
     this.submitted = false;
