@@ -14,7 +14,10 @@ export class DashboardComponent implements OnInit {
   Bookings: Array<Booking>
   NewDate: string
   date: string
-  constructor(private data: DataService) {
+  AdultsCount: number
+  ChildrenCount: number
+  StudentsCount: number
+  constructor(public data: DataService) {
     var today = new Date();
     this.NewDate = today.getFullYear() + '-' + (today.getMonth() >= 10 ? (today.getMonth() + 1) : "0" + (today.getMonth() + 1)) + '-' + (today.getDate() >= 10 ? (today.getDate()) : "0" + (today.getDate()));
     console.log(this.NewDate)
@@ -24,21 +27,55 @@ export class DashboardComponent implements OnInit {
      console.log(this.Ships)
     })
 
-   this.LoadDepartures()
 
-    this.data.getBookings().subscribe((res: Array<Booking>) => {
-      this.Bookings = res;
-      console.log(this.Bookings)
-    })
+
+
+    this.LoadDepartures()
+
+
+    //this.data.getBookings().subscribe((res: Array<Booking>) => {
+    //  this.Bookings = res;
+    //  console.log(this.Bookings)
+    //})
   }
 
   ngOnInit() {
   }
 
+  //LoadBookingsByDepartures() {
+
+  //  this.Departs.forEach(function (depart) {
+  //    this.data.getBookingsByDeparture(depart.DepartureID).subscribe((res: Array<Booking>) => {
+  //      depart.BookingList = res
+
+  //      for (var i = 0; i < depart.BookingList.length; i++) {
+  //        depart.AdultsCount = depart.BookingList[i].BookingAdultsCount + depart.BookingList[i].BookingFreeAdultsCount
+  //        depart.ChildrenCount = depart.BookingList[i].BookingChildrenCount + depart.BookingList[i].BookingFreeChildrenCount
+  //        depart.StudentsCount = depart.BookingList[i].BookingStudentsCount
+  //        depart.FreePassCount = depart.BookingList[i].BookingFreeAdultsCount + depart.BookingList[i].BookingFreeChildrenCount
+  //      }
+  //    });
+  //  });
+  //}
+
   LoadDepartures(){
     this.data.getDeparturesByDates(this.NewDate.toString()).subscribe((res: Array<Departure>) => {
+
       this.Departs = res;
+
+      for (var i = 0; i < this.Departs.length; i++) {
+        this.data.getBookingsByDeparture(this.Departs[i].DepartureID).subscribe((res: Array<Booking>) => {
+          this.Bookings = res;
+          console.log(this.Bookings)
+        });
+      }
       console.log(this.Departs)
+      
+      //this.LoadBookingsByDepartures()
+      
+
+   
+
     })
 }
  
@@ -74,6 +111,12 @@ export class Departure {
   DepartureMaxPassenger: number
   DepartureMaxAdults: number
   DepartureDate: Date
+  AdultsCount: number
+  ChildrenCount: number
+  StudentsCount: number
+  FreePassCount: number
+  TotalPassenger: number
+  BookingList: Array<Booking>
 }
 
 export class Ship {

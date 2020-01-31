@@ -60,7 +60,12 @@ namespace JayBookerBackEnd.Controllers
                                   DepartureMaxPassengers = d.DepartureMaxPassengers,
                                   DepartureMaxAdult = d.DepartureMaxAdults,
                                   DepartureDate = d.DepartureDate,
-
+                                
+                                  AdultsCount = db.Bookings.Where(t => d.DepartureID == t.FK_DepartureID).Sum(t=>t.BookingFreeAdultsCount + t.BookingAdultsCount),
+                                  ChildrenCount = db.Bookings.Where(t => d.DepartureID == t.FK_DepartureID).Sum(t=>t.BookingChildrenCount + t.BookingFreeChildrenCount),
+                                  StudentsCount = db.Bookings.Where(t => d.DepartureID == t.FK_DepartureID).Sum(t => t.BookingStudentsCount),
+                                  FreePassCount = db.Bookings.Where(t => d.DepartureID == t.FK_DepartureID).Sum(t=>t.BookingFreeChildrenCount + t.BookingFreeAdultsCount),
+                                  TotalPassenger = db.Bookings.Where(t=> d.DepartureID == t.FK_DepartureID).Sum(t => t.BookingAdultsCount +  + t.BookingChildrenCount + t.BookingFreeAdultsCount + t.BookingFreeChildrenCount + t.BookingStudentsCount)
                               }).Where(t => t.DepartureDate == currentDate);
 
             return departures.ToList();
@@ -170,5 +175,10 @@ namespace JayBookerBackEnd.Controllers
         public short DepartureMaxPassengers { get; set; }
         public short? DepartureMaxAdult { get; set; }
         public DateTime DepartureDate { get; set; }
+        public int? AdultsCount { get; internal set; }
+        public int? ChildrenCount { get; internal set; }
+        public int? StudentsCount { get; internal set; }
+        public int? FreePassCount { get; internal set; }
+        public int? TotalPassenger { get; internal set; }
     }
 }

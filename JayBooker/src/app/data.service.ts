@@ -6,12 +6,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
   //IIS url
- //url = "http://localhost/api/"
+  //url = "http://localhost/api/"
   //Backend direct debug
   url = "http://localhost:61569/api/"
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getShips() {
     return this.http.get(this.url + "ships");
@@ -24,7 +24,7 @@ export class DataService {
   getBookings() {
     return this.http.get(this.url + "bookings/");
   }
-    
+
   getDeparturesByDates(date) {
     return this.http.get(this.url + "departuresbydates/" + date);
   }
@@ -35,5 +35,11 @@ export class DataService {
 
   getAll(ctrl) {
     return this.http.get(this.url + ctrl);
+  }
+
+  getBookingsByDeparture(ID) {
+
+    return this.http.get(this.url + "getBookingsByDeparture/" + ID);
+
   }
 }
