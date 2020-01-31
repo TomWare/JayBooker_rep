@@ -19,10 +19,74 @@ namespace JayBookerBackEnd.Controllers
         private CroisiereEscoumins2020Entities db = new CroisiereEscoumins2020Entities();
 
         // GET: api/Bookings
-        public IQueryable<Bookings> GetBookings()
+        public List<BookingDisplay> GetBookings()
         {
-            return db.Bookings;
+            var bookings = (from b in db.Bookings
+                              select new BookingDisplay
+                              {
+                                  BookingID = b.BookingID,
+                                  FK_UserID = b.FK_UserID,
+                                  FK_GuestID = b.FK_GuestID,
+                                  FK_DepartureID = b.FK_DepartureID,
+                                  BookingDate = b.BookingDate,
+                                  BookingCreatedOn = b.BookingCreatedOn,
+                                  BookingVoucher = b.BookingVoucher,
+                                  BookingStatus = b.BookingStatus,
+                                  BookingAdultsCount = b.BookingAdultsCount,
+                                  BookingFreeAdultsCount = b.BookingFreeAdultsCount,
+                                  BookingChildrenCount = b.BookingChildrenCount,
+                                  BookingFreeChildrenCount = b.BookingFreeChildrenCount,
+                                  BookingStudentsCount = b.BookingStudentsCount,
+                                  BookingModified = b.BookingModified,
+                                  BookingIsActive = b.BookingIsActive,
+
+
+
+
+
+
+                              });
+
+            return bookings.ToList();
+
         }
+
+
+
+        //GET: api/LoadBookingsByDepartures
+       [HttpGet]
+       [Route("api/getBookingsByDeparture/{ID}")]
+        public List<BookingDisplay> getBookingsByDeparture(int ID)
+        {
+
+
+
+
+            var bookings = (from b in db.Bookings
+                                             select new BookingDisplay
+                                             {
+                                                 BookingID = b.BookingID,
+                                                 FK_UserID = b.FK_UserID,
+                                                 FK_GuestID = b.FK_GuestID,
+                                                 FK_DepartureID = b.FK_DepartureID,
+                                                 BookingDate = b.BookingDate,
+                                                 BookingCreatedOn = b.BookingCreatedOn,
+                                                 BookingVoucher = b.BookingVoucher,
+                                                 BookingStatus = b.BookingStatus,
+                                                 BookingAdultsCount = b.BookingAdultsCount,
+                                                 BookingFreeAdultsCount = b.BookingFreeAdultsCount,
+                                                 BookingChildrenCount = b.BookingChildrenCount,
+                                                 BookingFreeChildrenCount = b.BookingFreeChildrenCount,
+                                                 BookingStudentsCount = b.BookingStudentsCount,
+                                                 BookingModified = b.BookingModified,
+                                                 BookingIsActive = b.BookingIsActive,
+                                             }).Where(t => t.FK_DepartureID == ID);
+
+            return bookings.ToList();
+
+        }
+
+
 
         // GET: api/Bookings/5
         [ResponseType(typeof(Bookings))]
@@ -116,5 +180,24 @@ namespace JayBookerBackEnd.Controllers
         {
             return db.Bookings.Count(e => e.BookingID == id) > 0;
         }
+    }
+
+    public class BookingDisplay
+    {
+        public int BookingID { get; set; }
+        public int FK_UserID { get; set; }
+        public int FK_GuestID { get; set; }
+        public int? FK_DepartureID { get; set; }
+        public DateTime BookingDate { get; set; }
+        public DateTime BookingCreatedOn { get; set; }
+        public string BookingVoucher { get; set; }
+        public string BookingStatus { get; set; }
+        public short BookingAdultsCount { get; set; }
+        public short BookingFreeAdultsCount { get; set; }
+        public short BookingChildrenCount { get; set; }
+        public short BookingFreeChildrenCount { get; set; }
+        public short BookingStudentsCount { get; set; }
+        public bool BookingModified { get; set; }
+        public bool BookingIsActive { get; set; }
     }
 }

@@ -47,19 +47,21 @@
               </tr>
             </thead>
             <tbody>
-              <tr  *ngFor="let d of Departs"> <!--ngFor pour chaque depart sur les rows du tableau en envoyant date-->
+              <tr  *ngFor="let d of Departs">
+                <ng-container *ngIf="s.ShipID == d.FK_ShipID"><!--ngFor pour chaque depart sur les rows du tableau en envoyant date-->
                 <td>
                   {{d.DepartureHour}}
                 </td>
-                <td> 10 </td>
+                <td>{{d.AdultsCount}}</td>
                 <td>
-                  5
+                  {{d.ChildrenCount}}
                 </td>
-                <td> 8 </td>
+                <td> {{d.StudentsCount}} </td>
 
-                <td> 7 </td>
-                <td> 10/40 </td>
+                <td> {{d.FreePass}} </td>
+                <td> {{d.TotalPassenger}} / {{s.ShipMaxPassenger}} </td>
                 <td> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-print"></i></button></td>
+                </ng-container>
               </tr>
             
             </tbody>
