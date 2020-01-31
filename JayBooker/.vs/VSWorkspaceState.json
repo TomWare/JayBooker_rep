@@ -4,8 +4,10 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\dashboard",
-    "\\src\\app\\login"
+    "\\src\\app\\login",
+    "\\src\\app\\single-user",
+    "\\src\\app\\users"
   ],
-  "SelectedNode": "\\src\\app\\login\\login.component.ts",
+  "SelectedNode": "\\src\\app\\authentication.service.ts",
   "PreviewInSolutionExplorer": false
 }

@@ -392,18 +392,19 @@
               <i class="mdi mdi-earth"></i> Français
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
-              <a class="dropdown-item" href="#"> English </a>
+              <a class="dropdown-item" href="#"> <del>English</del></a>
              
             </div>
           </li>
           <li class="nav-item  nav-profile dropdown border-0">
             <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown">
-              <img class="nav-profile-img mr-2" alt="" src="../assets/images/faces/face1.jpg">
-              <span class="profile-name">Jeannine</span>
+              <i class="mdi mdi-account-circle"></i>
+              <span class="profile-name">{{currentUser.UserName}}</span>
             </a>
             <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
-                           <a class="dropdown-item" href="#">
-                <i class="mdi mdi-logout mr-2 text-primary"></i> Signout
+              
+              <a class="dropdown-item" href="#" (click)="logout()">
+                <i class="mdi mdi-logout mr-2 text-primary"></i>Déconnexion
               </a>
             </div>
           </li>
