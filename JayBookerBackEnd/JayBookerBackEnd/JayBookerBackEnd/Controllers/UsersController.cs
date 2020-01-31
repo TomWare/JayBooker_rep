@@ -80,6 +80,7 @@ namespace JayBookerBackEnd.Controllers
             {
                 return BadRequest(ModelState);
             }
+            
             users.UserCreatedOn = DateTime.Now;
             db.Users.Add(users);
             db.SaveChanges();
