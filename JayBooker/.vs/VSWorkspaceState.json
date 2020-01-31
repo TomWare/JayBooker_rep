@@ -3,11 +3,12 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\dashboard",
     "\\src\\app\\masks",
     "\\src\\app\\models",
     "\\src\\app\\single-user",
     "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\single-user\\single-user.component.ts",
+  "SelectedNode": "\\src\\app\\dashboard\\dashboard.component.ts",
   "PreviewInSolutionExplorer": false
 }
