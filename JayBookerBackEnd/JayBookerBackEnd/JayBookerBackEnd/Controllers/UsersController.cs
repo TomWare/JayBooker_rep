@@ -80,7 +80,14 @@ namespace JayBookerBackEnd.Controllers
             {
                 return BadRequest(ModelState);
             }
+            var userExists = db.Users.Where(t => t.UserName == users.UserName);
+            if (userExists.Count() > 0)
+            {
+                return BadRequest("Nom d'utilisateur déjà pris.");
+            }
+
             users.UserCreatedOn = DateTime.Now;
+
             db.Users.Add(users);
             db.SaveChanges();
 

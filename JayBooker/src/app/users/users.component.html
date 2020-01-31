@@ -1,1 +1,47 @@
-<p>users works!</p>
+
+<!--Tableau de Bord-->
+<div class="row"></div>
+<div>
+
+  <div class="content-wrapper bg-white mt-4">   
+    <div clsss="wrapper">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 style="text-align:center">Utilisateurs</h1>
+          <table class="table table-striped">
+            <thead>              
+              <tr>
+                <th style="color: black"> Modifier </th>
+                <th style="color: black"> Utilisateur </th>
+                <th style="color: black"> Nom </th>
+                <th style="color: black"> Prénom </th>
+                <th style="color: black"> Courriel</th>
+                <th style="color: black"> Téléphone</th>
+                <th style="color: black"> Rôle</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let u of users">
+                <!--ngFor pour chaque user du tableau-->
+                <td><a class="btn btn-info btn-sm" routerLink="../utilisateurs/{{u.UserID}}"> Modifier</a></td>
+                <td>
+                  {{u.UserName}}
+                </td>
+                <td> {{u.UserLastName}} </td>
+                <td>
+                  {{u.UserFirstName}}
+                </td>
+                <td> {{u.UserEmail}} </td>
+                <td>{{u.UserPhone}} </td>
+                <td> {{u.UserRole}} </td>
+
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

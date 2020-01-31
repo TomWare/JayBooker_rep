@@ -3,11 +3,15 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\dashboard",
+    "\\src\\app\\login",
     "\\src\\app\\masks",
     "\\src\\app\\models",
     "\\src\\app\\single-user",
-    "\\src\\assets"
+    "\\src\\app\\users",
+    "\\src\\assets",
+    "\\src\\assets\\js"
   ],
-  "SelectedNode": "\\src\\app\\single-user\\single-user.component.ts",
+  "SelectedNode": "\\src\\assets\\js\\off-canvas.js",
   "PreviewInSolutionExplorer": false
 }

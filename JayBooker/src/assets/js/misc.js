@@ -48,7 +48,7 @@
 
     //Close other submenu in sidebar on opening any
 
-    sidebar.on('show.bs.collapse', '.collapse', function() {
+    sidebar.on('show.bs.collapse', '.collapse', function () {
       sidebar.find('.collapse.show').collapse('hide');
     });
 
@@ -71,7 +71,7 @@
       }
     }
 
-    $('[data-toggle="minimize"]').on("click", function() {
+    $('body').on("click",'[data-toggle="minimize"]', function () {
       if ((body.hasClass('sidebar-toggle-display')) || (body.hasClass('sidebar-absolute'))) {
         body.toggleClass('sidebar-hidden');
       } else {

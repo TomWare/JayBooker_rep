@@ -1,7 +1,7 @@
 
-<div class="container-scroller">
+<div class="container-scroller" *ngIf="logged">
   <!-- partial:partials/_sidebar.html -->
-  <nav class="sidebar sidebar-offcanvas" id="sidebar" *ngIf="logged">    
+  <nav class="sidebar sidebar-offcanvas" id="sidebar" [hidden]="!logged">    
     <ul class="nav">
       <li class="nav-item">
         <a class="nav-link" routerLink="tableau-de-bord">
@@ -432,3 +432,5 @@
   </div>
   <!-- page-body-wrapper ends -->
 </div>
+
+<app-login *ngIf="!logged"></app-login>
