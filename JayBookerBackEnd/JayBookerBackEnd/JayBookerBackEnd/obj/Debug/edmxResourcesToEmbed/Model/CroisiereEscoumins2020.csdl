@@ -1,0 +1,804 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CroisiereEscoumins2020Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AccomodationRates">
+    <Key>
+      <PropertyRef Name="AccomodationRateID" />
+    </Key>
+    <Property Name="AccomodationRateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccomodationRateName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AccomodationSingle" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="AccomodationDouble" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="AccomodationTriple" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="AccomodationQuad" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="AccomodationRateStartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="AccomodationRateEndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="AccomodationRateIsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="SupplierRates" Relationship="Self.FK_SupplierRates_AccomodationRates" FromRole="AccomodationRates" ToRole="SupplierRates" />
+  </EntityType>
+  <EntityType Name="Accomodations">
+    <Key>
+      <PropertyRef Name="AccomodationID" />
+    </Key>
+    <Property Name="AccomodationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_AccomodationTypeID" Type="Int32" Nullable="false" />
+    <Property Name="AccomodationName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AccomodationDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AccomodationMaxOccupancy" Type="Byte" Nullable="false" />
+    <Property Name="AccomodationIsPublic" Type="Boolean" Nullable="false" />
+    <Property Name="AccomodationPriority" Type="Byte" Nullable="false" />
+    <Property Name="AccomodationExtraCharge" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="AccomodationIsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AccomodationTypes" Relationship="Self.FK_Accomodations_AccomodationTypes" FromRole="Accomodations" ToRole="AccomodationTypes" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK_Bookings_Accomodations" FromRole="Accomodations" ToRole="Bookings" />
+  </EntityType>
+  <EntityType Name="AccomodationTypes">
+    <Key>
+      <PropertyRef Name="AccomodationTypeID" />
+    </Key>
+    <Property Name="AccomodationTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccomodationTypeName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AccomodationTypeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AccomodationTypeIsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Accomodations" Relationship="Self.FK_Accomodations_AccomodationTypes" FromRole="AccomodationTypes" ToRole="Accomodations" />
+  </EntityType>
+  <EntityType Name="BookingHistory">
+    <Key>
+      <PropertyRef Name="BookingHistoryID" />
+    </Key>
+    <Property Name="BookingHistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_UserID" Type="Int32" Nullable="false" />
+    <Property Name="FK_BookingID" Type="Int32" Nullable="false" />
+    <Property Name="BookingHistoryCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BookingHistoryAction" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK_BookingHistory_Bookings" FromRole="BookingHistory" ToRole="Bookings" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_BookingHistory_Users" FromRole="BookingHistory" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Bookings">
+    <Key>
+      <PropertyRef Name="BookingID" />
+    </Key>
+    <Property Name="BookingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_UserID" Type="Int32" Nullable="false" />
+    <Property Name="FK_GuestID" Type="Int32" Nullable="false" />
+    <Property Name="FK_DepartureID" Type="Int32" />
+    <Property Name="FK_AccomodationID" Type="Int32" />
+    <Property Name="BookingDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="BookingCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BookingVoucher" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="BookingStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BookingAdultsCount" Type="Int16" Nullable="false" />
+    <Property Name="BookingFreeAdultsCount" Type="Int16" Nullable="false" />
+    <Property Name="BookingChildrenCount" Type="Int16" Nullable="false" />
+    <Property Name="BookingFreeChildrenCount" Type="Int16" Nullable="false" />
+    <Property Name="BookingStudentsCount" Type="Int16" Nullable="false" />
+    <Property Name="BookingModified" Type="Boolean" Nullable="false" />
+    <Property Name="BookingIsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Accomodations" Relationship="Self.FK_Bookings_Accomodations" FromRole="Bookings" ToRole="Accomodations" />
+    <NavigationProperty Name="BookingHistory" Relationship="Self.FK_BookingHistory_Bookings" FromRole="Bookings" ToRole="BookingHistory" />
+    <NavigationProperty Name="Departures" Relationship="Self.FK_Bookings_Departures" FromRole="Bookings" ToRole="Departures" />
+    <NavigationProperty Name="Guests" Relationship="Self.FK_Bookings_Guests" FromRole="Bookings" ToRole="Guests" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Bookings_Users" FromRole="Bookings" ToRole="Users" />
+    <NavigationProperty Name="Emails" Relationship="Self.FK_Emails_Bookings" FromRole="Bookings" ToRole="Emails" />
+    <NavigationProperty Name="InvoicedBookings" Relationship="Self.FK_InvoicedBookings_Bookings" FromRole="Bookings" ToRole="InvoicedBookings" />
+  </EntityType>
+  <EntityType Name="Departures">
+    <Key>
+      <PropertyRef Name="DepartureID" />
+    </Key>
+    <Property Name="DepartureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_SeasonID" Type="Int32" />
+    <Property Name="FK_ShipID" Type="Int32" />
+    <Property Name="DepartureHour" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DepartureDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DepartureMaxPassengers" Type="Int16" Nullable="false" />
+    <Property Name="DepartureMaxAdults" Type="Int16" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK_Bookings_Departures" FromRole="Departures" ToRole="Bookings" />
+    <NavigationProperty Name="Seasons" Relationship="Self.FK_Departures_Seasons" FromRole="Departures" ToRole="Seasons" />
+    <NavigationProperty Name="Ships" Relationship="Self.FK_Departures_Ships" FromRole="Departures" ToRole="Ships" />
+    <NavigationProperty Name="Logbook" Relationship="Self.FK_Logbook_Departures" FromRole="Departures" ToRole="Logbook" />
+  </EntityType>
+  <EntityType Name="Emails">
+    <Key>
+      <PropertyRef Name="EmailID" />
+    </Key>
+    <Property Name="EmailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_UserID" Type="Int32" Nullable="false" />
+    <Property Name="FK_GuestID" Type="Int32" />
+    <Property Name="FK_BookingID" Type="Int32" />
+    <Property Name="FK_EmailTemplateID" Type="Int32" Nullable="false" />
+    <Property Name="EmailText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EmailSubject" Type="String" MaxLength="78" FixedLength="false" Unicode="false" />
+    <Property Name="EmailSent" Type="Boolean" Nullable="false" />
+    <Property Name="EmailSentOn" Type="DateTime" Precision="3" />
+    <Property Name="EmailTo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EmailFrom" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK_Emails_Bookings" FromRole="Emails" ToRole="Bookings" />
+    <NavigationProperty Name="Guests" Relationship="Self.FK_Emails_Guests" FromRole="Emails" ToRole="Guests" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Emails_Users" FromRole="Emails" ToRole="Users" />
+    <NavigationProperty Name="EmailTemplates" Relationship="CroisiereEscoumins2020Model.FK_Emails_EmailTemplates" FromRole="Emails" ToRole="EmailTemplates" />
+  </EntityType>
+  <EntityType Name="EmailTemplates">
+    <Key>
+      <PropertyRef Name="EmailTemplateID" />
+    </Key>
+    <Property Name="EmailTemplateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmailTemplateName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmailTemplateText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EmailTemplateSubject" Type="String" MaxLength="78" FixedLength="false" Unicode="false" />
+    <Property Name="EmailTemplateLanguage" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmailTemplateIsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Emails" Relationship="CroisiereEscoumins2020Model.FK_Emails_EmailTemplates" FromRole="EmailTemplates" ToRole="Emails" />
+  </EntityType>
+  <EntityType Name="Guests">
+    <Key>
+      <PropertyRef Name="GuestID" />
+    </Key>
+    <Property Name="GuestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_SupplierID" Type="Int32" Nullable="false" />
+    <Property Name="GuestFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GuestLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GuestPhone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="GuestEmail" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+    <Property Name="GuestAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GuestCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GuestCountry" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="GuestPostalCode" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="GuestDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="GuestUserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="GuestPasswordHash" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="GuestCreditCardHash" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="GuestCCExpiry" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="GuestCVVHash" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="GuestLanguage" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GuestOptIn" Type="Boolean" Nullable="false" />
+    <Property Name="GuestCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="GuestIsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK_Bookings_Guests" FromRole="Guests" ToRole="Bookings" />
+    <NavigationProperty Name="Emails" Relationship="Self.FK_Emails_Guests" FromRole="Guests" ToRole="Emails" />
+    <NavigationProperty Name="Suppliers" Relationship="Self.FK_Guests_Suppliers" FromRole="Guests" ToRole="Suppliers" />
+    <NavigationProperty Name="Invoices" Relationship="Self.FK_Invoices_Guests" FromRole="Guests" ToRole="Invoices" />
+  </EntityType>
+  <EntityType Name="InvoicedBookings">
+    <Key>
+      <PropertyRef Name="FK_InvoiceID" />
+    </Key>
+    <Property Name="FK_InvoiceID" Type="Int32" Nullable="false" />
+    <Property Name="FK_BookingID" Type="Int32" Nullable="false" />
+    <Property Name="InvoicedAdultPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="InvoicedFreeAdultPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="InvoicedChildrenPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="InvoicedFreeChildrenPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="InvoicedStudentPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="InvoicedAccomodationPrice" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK_InvoicedBookings_Bookings" FromRole="InvoicedBookings" ToRole="Bookings" />
+  </EntityType>
+  <EntityType Name="InvoicedProducts">
+    <Key>
+      <PropertyRef Name="FK_InvoiceID" />
+    </Key>
+    <Property Name="FK_InvoiceID" Type="Int32" Nullable="false" />
+    <Property Name="FK_ProductID" Type="Int32" Nullable="false" />
+    <Property Name="InvoicedQuantity" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Invoices" Relationship="Self.FK_InvoicedProducts_Invoices" FromRole="InvoicedProducts" ToRole="Invoices" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_InvoicedProducts_Products" FromRole="InvoicedProducts" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Invoices">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+    </Key>
+    <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_UserID" Type="Int32" Nullable="false" />
+    <Property Name="FK_GuestID" Type="Int32" Nullable="false" />
+    <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="InvoiceStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InvoiceDiscount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="InvoiceDiscountReason" Type="String" MaxLength="140" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Guests" Relationship="Self.FK_Invoices_Guests" FromRole="Invoices" ToRole="Guests" />
+    <NavigationProperty Name="InvoicedProducts" Relationship="Self.FK_InvoicedProducts_Invoices" FromRole="Invoices" ToRole="InvoicedProducts" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Invoices_Users" FromRole="Invoices" ToRole="Users" />
+    <NavigationProperty Name="Payments" Relationship="Self.FK_Payments_Invoices" FromRole="Invoices" ToRole="Payments" />
+  </EntityType>
+  <EntityType Name="Logbook">
+    <Key>
+      <PropertyRef Name="FK_UserID" />
+    </Key>
+    <Property Name="FK_UserID" Type="Int32" Nullable="false" />
+    <Property Name="FK_DepartureID" Type="Int32" Nullable="false" />
+    <Property Name="LogBoatName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LogAdultCount" Type="Int16" Nullable="false" />
+    <Property Name="LogChildrenCount" Type="Int16" Nullable="false" />
+    <Property Name="Weather" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Wind" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Waves" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Whale" Type="Boolean" Nullable="false" />
+    <Property Name="Observations" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Departures" Relationship="Self.FK_Logbook_Departures" FromRole="Logbook" ToRole="Departures" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Logbook_Users" FromRole="Logbook" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Payments">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_InvoiceID" Type="Int32" Nullable="false" />
+    <Property Name="PaymentMethod" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PaymentTransactionNumber" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Invoices" Relationship="Self.FK_Payments_Invoices" FromRole="Payments" ToRole="Invoices" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Productrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ProductIsPublic" Type="Boolean" Nullable="false" />
+    <Property Name="ProductPriority" Type="Byte" Nullable="false" />
+    <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductIsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="InvoicedProducts" Relationship="Self.FK_InvoicedProducts_Products" FromRole="Products" ToRole="InvoicedProducts" />
+  </EntityType>
+  <EntityType Name="Seasons">
+    <Key>
+      <PropertyRef Name="SeasonID" />
+    </Key>
+    <Property Name="SeasonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SeasonName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SeasonStartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SeasonEndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SeasonIsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Departures" Relationship="Self.FK_Departures_Seasons" FromRole="Seasons" ToRole="Departures" />
+  </EntityType>
+  <EntityType Name="ShipDesigns">
+    <Key>
+      <PropertyRef Name="ShipDesignID" />
+    </Key>
+    <Property Name="ShipDesignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShipDesignName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ShipDesignDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ShipDesignIsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Ships" Relationship="Self.FK_Ships_ShipDesigns" FromRole="ShipDesigns" ToRole="Ships" />
+  </EntityType>
+  <EntityType Name="ShipRates">
+    <Key>
+      <PropertyRef Name="ShipRateID" />
+    </Key>
+    <Property Name="ShipRateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShipRateName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ShipRateAdult" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ShipRateFreeAdult" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ShipRateChildren" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ShipRateFreeChildren" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ShipRateStudent" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ShipRateStartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ShipRateEndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ShipRateIsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="SupplierRates" Relationship="Self.FK_SupplierRates_ShipRates" FromRole="ShipRates" ToRole="SupplierRates" />
+  </EntityType>
+  <EntityType Name="Ships">
+    <Key>
+      <PropertyRef Name="ShipID" />
+    </Key>
+    <Property Name="ShipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_ShipDesignID" Type="Int32" Nullable="false" />
+    <Property Name="ShipName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ShipDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ShipMaxPassengers" Type="Byte" Nullable="false" />
+    <Property Name="ShipIsPublic" Type="Boolean" Nullable="false" />
+    <Property Name="ShipPriority" Type="Byte" Nullable="false" />
+    <Property Name="ShipIsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Departures" Relationship="Self.FK_Departures_Ships" FromRole="Ships" ToRole="Departures" />
+    <NavigationProperty Name="ShipDesigns" Relationship="Self.FK_Ships_ShipDesigns" FromRole="Ships" ToRole="ShipDesigns" />
+  </EntityType>
+  <EntityType Name="SupplierRates">
+    <Key>
+      <PropertyRef Name="FK_SupplierID" />
+    </Key>
+    <Property Name="FK_SupplierID" Type="Int32" Nullable="false" />
+    <Property Name="FK_ShipRateID" Type="Int32" Nullable="false" />
+    <Property Name="FK_AccomodationRateID" Type="Int32" Nullable="false" />
+    <Property Name="SupplierRateName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SuplierRateIsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AccomodationRates" Relationship="Self.FK_SupplierRates_AccomodationRates" FromRole="SupplierRates" ToRole="AccomodationRates" />
+    <NavigationProperty Name="ShipRates" Relationship="Self.FK_SupplierRates_ShipRates" FromRole="SupplierRates" ToRole="ShipRates" />
+    <NavigationProperty Name="Suppliers" Relationship="Self.FK_SupplierRates_Suppliers" FromRole="SupplierRates" ToRole="Suppliers" />
+  </EntityType>
+  <EntityType Name="Suppliers">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SupplierContactFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierContactLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierContactPhone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierSecondaryPhone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierExtension" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierEmail" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierCountry" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierPostalCode" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierIsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Guests" Relationship="Self.FK_Guests_Suppliers" FromRole="Suppliers" ToRole="Guests" />
+    <NavigationProperty Name="SupplierRates" Relationship="Self.FK_SupplierRates_Suppliers" FromRole="Suppliers" ToRole="SupplierRates" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserPasswordHash" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+    <Property Name="UserFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserCountry" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserPostalCode" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="UserPhone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="UserDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UserRole" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserIsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BookingHistory" Relationship="Self.FK_BookingHistory_Users" FromRole="Users" ToRole="BookingHistory" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK_Bookings_Users" FromRole="Users" ToRole="Bookings" />
+    <NavigationProperty Name="Emails" Relationship="Self.FK_Emails_Users" FromRole="Users" ToRole="Emails" />
+    <NavigationProperty Name="Invoices" Relationship="Self.FK_Invoices_Users" FromRole="Users" ToRole="Invoices" />
+    <NavigationProperty Name="Logbook" Relationship="Self.FK_Logbook_Users" FromRole="Users" ToRole="Logbook" />
+  </EntityType>
+  <Association Name="FK_SupplierRates_AccomodationRates">
+    <End Role="AccomodationRates" Type="Self.AccomodationRates" Multiplicity="1" />
+    <End Role="SupplierRates" Type="Self.SupplierRates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccomodationRates">
+        <PropertyRef Name="AccomodationRateID" />
+      </Principal>
+      <Dependent Role="SupplierRates">
+        <PropertyRef Name="FK_AccomodationRateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Accomodations_AccomodationTypes">
+    <End Role="AccomodationTypes" Type="Self.AccomodationTypes" Multiplicity="1" />
+    <End Role="Accomodations" Type="Self.Accomodations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccomodationTypes">
+        <PropertyRef Name="AccomodationTypeID" />
+      </Principal>
+      <Dependent Role="Accomodations">
+        <PropertyRef Name="FK_AccomodationTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bookings_Accomodations">
+    <End Role="Accomodations" Type="Self.Accomodations" Multiplicity="0..1" />
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accomodations">
+        <PropertyRef Name="AccomodationID" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="FK_AccomodationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookingHistory_Bookings">
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />
+    <End Role="BookingHistory" Type="Self.BookingHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookings">
+        <PropertyRef Name="BookingID" />
+      </Principal>
+      <Dependent Role="BookingHistory">
+        <PropertyRef Name="FK_BookingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookingHistory_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="BookingHistory" Type="Self.BookingHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="BookingHistory">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bookings_Departures">
+    <End Role="Departures" Type="Self.Departures" Multiplicity="1" />
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departures">
+        <PropertyRef Name="DepartureID" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="FK_GuestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bookings_Guests">
+    <End Role="Guests" Type="Self.Guests" Multiplicity="1" />
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Guests">
+        <PropertyRef Name="GuestID" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="FK_GuestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bookings_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Emails_Bookings">
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="0..1" />
+    <End Role="Emails" Type="Self.Emails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookings">
+        <PropertyRef Name="BookingID" />
+      </Principal>
+      <Dependent Role="Emails">
+        <PropertyRef Name="FK_BookingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvoicedBookings_Bookings">
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />
+    <End Role="InvoicedBookings" Type="Self.InvoicedBookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookings">
+        <PropertyRef Name="BookingID" />
+      </Principal>
+      <Dependent Role="InvoicedBookings">
+        <PropertyRef Name="FK_BookingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Departures_Seasons">
+    <End Role="Seasons" Type="Self.Seasons" Multiplicity="0..1" />
+    <End Role="Departures" Type="Self.Departures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seasons">
+        <PropertyRef Name="SeasonID" />
+      </Principal>
+      <Dependent Role="Departures">
+        <PropertyRef Name="FK_SeasonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Departures_Ships">
+    <End Role="Ships" Type="Self.Ships" Multiplicity="0..1" />
+    <End Role="Departures" Type="Self.Departures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ships">
+        <PropertyRef Name="ShipID" />
+      </Principal>
+      <Dependent Role="Departures">
+        <PropertyRef Name="FK_ShipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logbook_Departures">
+    <End Role="Departures" Type="Self.Departures" Multiplicity="1" />
+    <End Role="Logbook" Type="Self.Logbook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departures">
+        <PropertyRef Name="DepartureID" />
+      </Principal>
+      <Dependent Role="Logbook">
+        <PropertyRef Name="FK_DepartureID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Emails_Guests">
+    <End Role="Guests" Type="Self.Guests" Multiplicity="0..1" />
+    <End Role="Emails" Type="Self.Emails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Guests">
+        <PropertyRef Name="GuestID" />
+      </Principal>
+      <Dependent Role="Emails">
+        <PropertyRef Name="FK_GuestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Emails_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Emails" Type="Self.Emails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Emails">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guests_Suppliers">
+    <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="1" />
+    <End Role="Guests" Type="Self.Guests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suppliers">
+        <PropertyRef Name="SupplierID" />
+      </Principal>
+      <Dependent Role="Guests">
+        <PropertyRef Name="FK_SupplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoices_Guests">
+    <End Role="Guests" Type="Self.Guests" Multiplicity="1" />
+    <End Role="Invoices" Type="Self.Invoices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Guests">
+        <PropertyRef Name="GuestID" />
+      </Principal>
+      <Dependent Role="Invoices">
+        <PropertyRef Name="FK_GuestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvoicedProducts_Invoices">
+    <End Role="Invoices" Type="Self.Invoices" Multiplicity="1" />
+    <End Role="InvoicedProducts" Type="Self.InvoicedProducts" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Invoices">
+        <PropertyRef Name="InvoiceID" />
+      </Principal>
+      <Dependent Role="InvoicedProducts">
+        <PropertyRef Name="FK_InvoiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvoicedProducts_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="InvoicedProducts" Type="Self.InvoicedProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="InvoicedProducts">
+        <PropertyRef Name="FK_ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoices_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Invoices" Type="Self.Invoices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Invoices">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payments_Invoices">
+    <End Role="Invoices" Type="Self.Invoices" Multiplicity="1" />
+    <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoices">
+        <PropertyRef Name="InvoiceID" />
+      </Principal>
+      <Dependent Role="Payments">
+        <PropertyRef Name="FK_InvoiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logbook_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Logbook" Type="Self.Logbook" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Logbook">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ships_ShipDesigns">
+    <End Role="ShipDesigns" Type="Self.ShipDesigns" Multiplicity="1" />
+    <End Role="Ships" Type="Self.Ships" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShipDesigns">
+        <PropertyRef Name="ShipDesignID" />
+      </Principal>
+      <Dependent Role="Ships">
+        <PropertyRef Name="FK_ShipDesignID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierRates_ShipRates">
+    <End Role="ShipRates" Type="Self.ShipRates" Multiplicity="1" />
+    <End Role="SupplierRates" Type="Self.SupplierRates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShipRates">
+        <PropertyRef Name="ShipRateID" />
+      </Principal>
+      <Dependent Role="SupplierRates">
+        <PropertyRef Name="FK_ShipRateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierRates_Suppliers">
+    <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="1" />
+    <End Role="SupplierRates" Type="Self.SupplierRates" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Suppliers">
+        <PropertyRef Name="SupplierID" />
+      </Principal>
+      <Dependent Role="SupplierRates">
+        <PropertyRef Name="FK_SupplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CroisiereEscoumins2020Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AccomodationRates" EntityType="Self.AccomodationRates" />
+    <EntitySet Name="Accomodations" EntityType="Self.Accomodations" />
+    <EntitySet Name="AccomodationTypes" EntityType="Self.AccomodationTypes" />
+    <EntitySet Name="BookingHistory" EntityType="Self.BookingHistory" />
+    <EntitySet Name="Bookings" EntityType="Self.Bookings" />
+    <EntitySet Name="Departures" EntityType="Self.Departures" />
+    <EntitySet Name="Emails" EntityType="Self.Emails" />
+    <EntitySet Name="EmailTemplates" EntityType="Self.EmailTemplates" />
+    <EntitySet Name="Guests" EntityType="Self.Guests" />
+    <EntitySet Name="InvoicedBookings" EntityType="Self.InvoicedBookings" />
+    <EntitySet Name="InvoicedProducts" EntityType="Self.InvoicedProducts" />
+    <EntitySet Name="Invoices" EntityType="Self.Invoices" />
+    <EntitySet Name="Logbook" EntityType="Self.Logbook" />
+    <EntitySet Name="Payments" EntityType="Self.Payments" />
+    <EntitySet Name="Products" EntityType="Self.Products" />
+    <EntitySet Name="Seasons" EntityType="Self.Seasons" />
+    <EntitySet Name="ShipDesigns" EntityType="Self.ShipDesigns" />
+    <EntitySet Name="ShipRates" EntityType="Self.ShipRates" />
+    <EntitySet Name="Ships" EntityType="Self.Ships" />
+    <EntitySet Name="SupplierRates" EntityType="Self.SupplierRates" />
+    <EntitySet Name="Suppliers" EntityType="Self.Suppliers" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_SupplierRates_AccomodationRates" Association="Self.FK_SupplierRates_AccomodationRates">
+      <End Role="AccomodationRates" EntitySet="AccomodationRates" />
+      <End Role="SupplierRates" EntitySet="SupplierRates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Accomodations_AccomodationTypes" Association="Self.FK_Accomodations_AccomodationTypes">
+      <End Role="AccomodationTypes" EntitySet="AccomodationTypes" />
+      <End Role="Accomodations" EntitySet="Accomodations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bookings_Accomodations" Association="Self.FK_Bookings_Accomodations">
+      <End Role="Accomodations" EntitySet="Accomodations" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookingHistory_Bookings" Association="Self.FK_BookingHistory_Bookings">
+      <End Role="Bookings" EntitySet="Bookings" />
+      <End Role="BookingHistory" EntitySet="BookingHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookingHistory_Users" Association="Self.FK_BookingHistory_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="BookingHistory" EntitySet="BookingHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bookings_Departures" Association="Self.FK_Bookings_Departures">
+      <End Role="Departures" EntitySet="Departures" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bookings_Guests" Association="Self.FK_Bookings_Guests">
+      <End Role="Guests" EntitySet="Guests" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bookings_Users" Association="Self.FK_Bookings_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Emails_Bookings" Association="Self.FK_Emails_Bookings">
+      <End Role="Bookings" EntitySet="Bookings" />
+      <End Role="Emails" EntitySet="Emails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvoicedBookings_Bookings" Association="Self.FK_InvoicedBookings_Bookings">
+      <End Role="Bookings" EntitySet="Bookings" />
+      <End Role="InvoicedBookings" EntitySet="InvoicedBookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Departures_Seasons" Association="Self.FK_Departures_Seasons">
+      <End Role="Seasons" EntitySet="Seasons" />
+      <End Role="Departures" EntitySet="Departures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Departures_Ships" Association="Self.FK_Departures_Ships">
+      <End Role="Ships" EntitySet="Ships" />
+      <End Role="Departures" EntitySet="Departures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logbook_Departures" Association="Self.FK_Logbook_Departures">
+      <End Role="Departures" EntitySet="Departures" />
+      <End Role="Logbook" EntitySet="Logbook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Emails_Guests" Association="Self.FK_Emails_Guests">
+      <End Role="Guests" EntitySet="Guests" />
+      <End Role="Emails" EntitySet="Emails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Emails_Users" Association="Self.FK_Emails_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Emails" EntitySet="Emails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guests_Suppliers" Association="Self.FK_Guests_Suppliers">
+      <End Role="Suppliers" EntitySet="Suppliers" />
+      <End Role="Guests" EntitySet="Guests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoices_Guests" Association="Self.FK_Invoices_Guests">
+      <End Role="Guests" EntitySet="Guests" />
+      <End Role="Invoices" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvoicedProducts_Invoices" Association="Self.FK_InvoicedProducts_Invoices">
+      <End Role="Invoices" EntitySet="Invoices" />
+      <End Role="InvoicedProducts" EntitySet="InvoicedProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvoicedProducts_Products" Association="Self.FK_InvoicedProducts_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="InvoicedProducts" EntitySet="InvoicedProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoices_Users" Association="Self.FK_Invoices_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Invoices" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payments_Invoices" Association="Self.FK_Payments_Invoices">
+      <End Role="Invoices" EntitySet="Invoices" />
+      <End Role="Payments" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logbook_Users" Association="Self.FK_Logbook_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Logbook" EntitySet="Logbook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ships_ShipDesigns" Association="Self.FK_Ships_ShipDesigns">
+      <End Role="ShipDesigns" EntitySet="ShipDesigns" />
+      <End Role="Ships" EntitySet="Ships" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierRates_ShipRates" Association="Self.FK_SupplierRates_ShipRates">
+      <End Role="ShipRates" EntitySet="ShipRates" />
+      <End Role="SupplierRates" EntitySet="SupplierRates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierRates_Suppliers" Association="Self.FK_SupplierRates_Suppliers">
+      <End Role="Suppliers" EntitySet="Suppliers" />
+      <End Role="SupplierRates" EntitySet="SupplierRates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Emails_EmailTemplates" Association="CroisiereEscoumins2020Model.FK_Emails_EmailTemplates">
+      <End Role="EmailTemplates" EntitySet="EmailTemplates" />
+      <End Role="Emails" EntitySet="Emails" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_Emails_EmailTemplates">
+    <End Type="CroisiereEscoumins2020Model.EmailTemplates" Role="EmailTemplates" Multiplicity="1" />
+    <End Type="CroisiereEscoumins2020Model.Emails" Role="Emails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmailTemplates">
+        <PropertyRef Name="EmailTemplateID" />
+      </Principal>
+      <Dependent Role="Emails">
+        <PropertyRef Name="FK_EmailTemplateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

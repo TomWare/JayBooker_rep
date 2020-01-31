@@ -1,0 +1,108 @@
+<div class="container-scroller">
+  <div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div class="content-wrapper d-flex align-items-center auth">
+      <div class="row flex-grow">
+        <div class="col-lg-4 mx-auto">
+          <div class="auth-form-light text-left p-5">
+            <div class="brand-logo">
+              <img src="../../../assets/images/JayBookerLogo3.png">
+            </div>
+            <h4>Nouvel utilisateur</h4>
+            <h6 class="font-weight-light">Les champs marqués d'une * sont obligatoires</h6>
+            <form class="pt-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <input type="text" formControlName="username" class="form-control form-control-lg" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Nom d'utilisateur*">
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                  <div *ngIf="f.username.errors.required">Veuilez entrer un nom d'utilisateur</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="email" formControlName="email" class="form-control form-control-lg" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Courriel*">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Veuillez indiquer le courriel</div>
+                  <div *ngIf="f.email.errors.email">Adresse courriel invalide</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="password" formControlName="password" class="form-control form-control-lg" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Mot de passe*">
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Veuillez inscrire un mot de passe</div>
+                  <div *ngIf="f.password.errors.minlength">Le mot de passe doit contenir au moins 6 caractères</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="password" formControlName="confirmPassword" class="form-control form-control-lg" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" placeholder="Confirmer mot de passe*">
+                <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                  <div *ngIf="f.confirmPassword.errors.required">Veuillez inscrire un mot de passe</div>
+                  <div *ngIf="f.confirmPassword.errors.minlength">Le mot de passe doit contenir au moins 6 caractères</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" formControlName="firstName" class="form-control form-control-lg" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" placeholder="Prénom*">
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                  <div *ngIf="f.firstName.errors.required">Veuillez indiquer le prénom</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" formControlName="lastName" class="form-control form-control-lg" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" placeholder="Nom*">
+                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                  <div *ngIf="f.lastName.errors.required">Veuillez indiquer le nom de famille</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input type="text" formControlName="address" class="form-control form-control-lg" placeholder="Adresse">
+              </div>
+              <div class="form-group">
+                <input type="text" formControlName="city" class="form-control form-control-lg" placeholder="Ville">
+              </div>
+              <div class="form-group">
+                <select formControlName="country" class="form-control form-control-lg" (ngModelChange)="validateZip()">
+                  <option value="Canada">Canada</option>
+                  <option value="France">France</option>
+                  <option value="Autre">Autre</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="text" formControlName="postalCode" class="form-control form-control-lg" [ngClass]="{ 'is-invalid': submitted && f.postalCode.errors }" placeholder="Code postal">
+                <div *ngIf="submitted && f.postalCode.errors" class="invalid-feedback">Code postal invalide | Canada : H0H 0H0 | Europe/USA : 90210</div>
+              </div>
+              <div class="form-group">
+                <input type="text" formControlName="phone" appPhoneMask class="form-control form-control-lg" placeholder="(123) 123-4567">
+              </div>
+              <div class="form-group">
+                <textarea formControlName="description" class="form-control" rows="5" placeholder="Commentaires"></textarea>
+              </div>
+
+              <div class="form-group">
+                <h4>Rôle de l'utilisateur</h4>
+                <select formControlName="role" class="form-control form-control-lg">
+                  <option value="Admin">Admin</option>
+                  <option value="Comptabilité">Comptabilité</option>
+                  <option value="Capitaine">Capitaine</option>
+                  <option value="Direction">Direction</option>
+                  <option value="Naturaliste">Naturaliste</option>
+                  <option value="Réception">Réception</option>
+                </select>
+              </div>
+              <div class="mb-4">
+                <div class="form-check">
+                  <label class="form-check-label text-muted">
+                    <input type="checkbox" class="form-check-input" formControlName="userIsActive"> Utilisateur actif
+                  </label>
+                </div>
+              </div>
+
+              <div class="mt-3">
+                <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">ENREGISTRER</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+</div>

@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CroisiereEscoumins2020ModelStoreContainer" CdmEntityContainer="CroisiereEscoumins2020Entities">
+    <EntitySetMapping Name="AccomodationRates">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.AccomodationRates">
+        <MappingFragment StoreEntitySet="AccomodationRates">
+          <ScalarProperty Name="AccomodationRateID" ColumnName="AccomodationRateID" />
+          <ScalarProperty Name="AccomodationRateName" ColumnName="AccomodationRateName" />
+          <ScalarProperty Name="AccomodationSingle" ColumnName="AccomodationSingle" />
+          <ScalarProperty Name="AccomodationDouble" ColumnName="AccomodationDouble" />
+          <ScalarProperty Name="AccomodationTriple" ColumnName="AccomodationTriple" />
+          <ScalarProperty Name="AccomodationQuad" ColumnName="AccomodationQuad" />
+          <ScalarProperty Name="AccomodationRateStartDate" ColumnName="AccomodationRateStartDate" />
+          <ScalarProperty Name="AccomodationRateEndDate" ColumnName="AccomodationRateEndDate" />
+          <ScalarProperty Name="AccomodationRateIsActive" ColumnName="AccomodationRateIsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Accomodations">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.Accomodations">
+        <MappingFragment StoreEntitySet="Accomodations">
+          <ScalarProperty Name="AccomodationID" ColumnName="AccomodationID" />
+          <ScalarProperty Name="FK_AccomodationTypeID" ColumnName="FK_AccomodationTypeID" />
+          <ScalarProperty Name="AccomodationName" ColumnName="AccomodationName" />
+          <ScalarProperty Name="AccomodationDescription" ColumnName="AccomodationDescription" />
+          <ScalarProperty Name="AccomodationMaxOccupancy" ColumnName="AccomodationMaxOccupancy" />
+          <ScalarProperty Name="AccomodationIsPublic" ColumnName="AccomodationIsPublic" />
+          <ScalarProperty Name="AccomodationPriority" ColumnName="AccomodationPriority" />
+          <ScalarProperty Name="AccomodationExtraCharge" ColumnName="AccomodationExtraCharge" />
+          <ScalarProperty Name="AccomodationIsActive" ColumnName="AccomodationIsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccomodationTypes">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.AccomodationTypes">
+        <MappingFragment StoreEntitySet="AccomodationTypes">
+          <ScalarProperty Name="AccomodationTypeID" ColumnName="AccomodationTypeID" />
+          <ScalarProperty Name="AccomodationTypeName" ColumnName="AccomodationTypeName" />
+          <ScalarProperty Name="AccomodationTypeDescription" ColumnName="AccomodationTypeDescription" />
+          <ScalarProperty Name="AccomodationTypeIsActive" ColumnName="AccomodationTypeIsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingHistory">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.BookingHistory">
+        <MappingFragment StoreEntitySet="BookingHistory">
+          <ScalarProperty Name="BookingHistoryID" ColumnName="BookingHistoryID" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="FK_BookingID" ColumnName="FK_BookingID" />
+          <ScalarProperty Name="BookingHistoryCreatedOn" ColumnName="BookingHistoryCreatedOn" />
+          <ScalarProperty Name="BookingHistoryAction" ColumnName="BookingHistoryAction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.Bookings">
+        <MappingFragment StoreEntitySet="Bookings">
+          <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="FK_GuestID" ColumnName="FK_GuestID" />
+          <ScalarProperty Name="FK_DepartureID" ColumnName="FK_DepartureID" />
+          <ScalarProperty Name="FK_AccomodationID" ColumnName="FK_AccomodationID" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="BookingCreatedOn" ColumnName="BookingCreatedOn" />
+          <ScalarProperty Name="BookingVoucher" ColumnName="BookingVoucher" />
+          <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+          <ScalarProperty Name="BookingAdultsCount" ColumnName="BookingAdultsCount" />
+          <ScalarProperty Name="BookingFreeAdultsCount" ColumnName="BookingFreeAdultsCount" />
+          <ScalarProperty Name="BookingChildrenCount" ColumnName="BookingChildrenCount" />
+          <ScalarProperty Name="BookingFreeChildrenCount" ColumnName="BookingFreeChildrenCount" />
+          <ScalarProperty Name="BookingStudentsCount" ColumnName="BookingStudentsCount" />
+          <ScalarProperty Name="BookingModified" ColumnName="BookingModified" />
+          <ScalarProperty Name="BookingIsActive" ColumnName="BookingIsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departures">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.Departures">
+        <MappingFragment StoreEntitySet="Departures">
+          <ScalarProperty Name="DepartureID" ColumnName="DepartureID" />
+          <ScalarProperty Name="FK_SeasonID" ColumnName="FK_SeasonID" />
+          <ScalarProperty Name="FK_ShipID" ColumnName="FK_ShipID" />
+          <ScalarProperty Name="DepartureHour" ColumnName="DepartureHour" />
+          <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
+          <ScalarProperty Name="DepartureMaxPassengers" ColumnName="DepartureMaxPassengers" />
+          <ScalarProperty Name="DepartureMaxAdults" ColumnName="DepartureMaxAdults" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emails">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.Emails">
+        <MappingFragment StoreEntitySet="Emails">
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="FK_GuestID" ColumnName="FK_GuestID" />
+          <ScalarProperty Name="FK_BookingID" ColumnName="FK_BookingID" />
+          <ScalarProperty Name="FK_EmailTemplateID" ColumnName="FK_EmailTemplateID" />
+          <ScalarProperty Name="EmailText" ColumnName="EmailText" />
+          <ScalarProperty Name="EmailSubject" ColumnName="EmailSubject" />
+          <ScalarProperty Name="EmailSent" ColumnName="EmailSent" />
+          <ScalarProperty Name="EmailSentOn" ColumnName="EmailSentOn" />
+          <ScalarProperty Name="EmailTo" ColumnName="EmailTo" />
+          <ScalarProperty Name="EmailFrom" ColumnName="EmailFrom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailTemplates">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.EmailTemplates">
+        <MappingFragment StoreEntitySet="EmailTemplates">
+          <ScalarProperty Name="EmailTemplateID" ColumnName="EmailTemplateID" />
+          <ScalarProperty Name="EmailTemplateName" ColumnName="EmailTemplateName" />
+          <ScalarProperty Name="EmailTemplateText" ColumnName="EmailTemplateText" />
+          <ScalarProperty Name="EmailTemplateSubject" ColumnName="EmailTemplateSubject" />
+          <ScalarProperty Name="EmailTemplateLanguage" ColumnName="EmailTemplateLanguage" />
+          <ScalarProperty Name="EmailTemplateIsActive" ColumnName="EmailTemplateIsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Guests">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.Guests">
+        <MappingFragment StoreEntitySet="Guests">
+          <ScalarProperty Name="GuestID" ColumnName="GuestID" />
+          <ScalarProperty Name="FK_SupplierID" ColumnName="FK_SupplierID" />
+          <ScalarProperty Name="GuestFirstName" ColumnName="GuestFirstName" />
+          <ScalarProperty Name="GuestLastName" ColumnName="GuestLastName" />
+          <ScalarProperty Name="GuestPhone" ColumnName="GuestPhone" />
+          <ScalarProperty Name="GuestEmail" ColumnName="GuestEmail" />
+          <ScalarProperty Name="GuestAddress" ColumnName="GuestAddress" />
+          <ScalarProperty Name="GuestCity" ColumnName="GuestCity" />
+          <ScalarProperty Name="GuestCountry" ColumnName="GuestCountry" />
+          <ScalarProperty Name="GuestPostalCode" ColumnName="GuestPostalCode" />
+          <ScalarProperty Name="GuestDescription" ColumnName="GuestDescription" />
+          <ScalarProperty Name="GuestUserName" ColumnName="GuestUserName" />
+          <ScalarProperty Name="GuestPasswordHash" ColumnName="GuestPasswordHash" />
+          <ScalarProperty Name="GuestCreditCardHash" ColumnName="GuestCreditCardHash" />
+          <ScalarProperty Name="GuestCCExpiry" ColumnName="GuestCCExpiry" />
+          <ScalarProperty Name="GuestCVVHash" ColumnName="GuestCVVHash" />
+          <ScalarProperty Name="GuestLanguage" ColumnName="GuestLanguage" />
+          <ScalarProperty Name="GuestOptIn" ColumnName="GuestOptIn" />
+          <ScalarProperty Name="GuestCreatedOn" ColumnName="GuestCreatedOn" />
+          <ScalarProperty Name="GuestIsActive" ColumnName="GuestIsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoicedBookings">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.InvoicedBookings">
+        <MappingFragment StoreEntitySet="InvoicedBookings">
+          <ScalarProperty Name="FK_InvoiceID" ColumnName="FK_InvoiceID" />
+          <ScalarProperty Name="FK_BookingID" ColumnName="FK_BookingID" />
+          <ScalarProperty Name="InvoicedAdultPrice" ColumnName="InvoicedAdultPrice" />
+          <ScalarProperty Name="InvoicedFreeAdultPrice" ColumnName="InvoicedFreeAdultPrice" />
+          <ScalarProperty Name="InvoicedChildrenPrice" ColumnName="InvoicedChildrenPrice" />
+          <ScalarProperty Name="InvoicedFreeChildrenPrice" ColumnName="InvoicedFreeChildrenPrice" />
+          <ScalarProperty Name="InvoicedStudentPrice" ColumnName="InvoicedStudentPrice" />
+          <ScalarProperty Name="InvoicedAccomodationPrice" ColumnName="InvoicedAccomodationPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoicedProducts">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.InvoicedProducts">
+        <MappingFragment StoreEntitySet="InvoicedProducts">
+          <ScalarProperty Name="FK_InvoiceID" ColumnName="FK_InvoiceID" />
+          <ScalarProperty Name="FK_ProductID" ColumnName="FK_ProductID" />
+          <ScalarProperty Name="InvoicedQuantity" ColumnName="InvoicedQuantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.Invoices">
+        <MappingFragment StoreEntitySet="Invoices">
+          <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="FK_GuestID" ColumnName="FK_GuestID" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="InvoiceStatus" ColumnName="InvoiceStatus" />
+          <ScalarProperty Name="InvoiceDiscount" ColumnName="InvoiceDiscount" />
+          <ScalarProperty Name="InvoiceDiscountReason" ColumnName="InvoiceDiscountReason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logbook">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.Logbook">
+        <MappingFragment StoreEntitySet="Logbook">
+          <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+          <ScalarProperty Name="FK_DepartureID" ColumnName="FK_DepartureID" />
+          <ScalarProperty Name="LogBoatName" ColumnName="LogBoatName" />
+          <ScalarProperty Name="LogAdultCount" ColumnName="LogAdultCount" />
+          <ScalarProperty Name="LogChildrenCount" ColumnName="LogChildrenCount" />
+          <ScalarProperty Name="Weather" ColumnName="Weather" />
+          <ScalarProperty Name="Wind" ColumnName="Wind" />
+          <ScalarProperty Name="Waves" ColumnName="Waves" />
+          <ScalarProperty Name="Whale" ColumnName="Whale" />
+          <ScalarProperty Name="Observations" ColumnName="Observations" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.Payments">
+        <MappingFragment StoreEntitySet="Payments">
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+          <ScalarProperty Name="FK_InvoiceID" ColumnName="FK_InvoiceID" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="PaymentTransactionNumber" ColumnName="PaymentTransactionNumber" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.Products">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Productrice" ColumnName="Productrice" />
+          <ScalarProperty Name="ProductIsPublic" ColumnName="ProductIsPublic" />
+          <ScalarProperty Name="ProductPriority" ColumnName="ProductPriority" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="ProductIsActive" ColumnName="ProductIsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seasons">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.Seasons">
+        <MappingFragment StoreEntitySet="Seasons">
+          <ScalarProperty Name="SeasonID" ColumnName="SeasonID" />
+          <ScalarProperty Name="SeasonName" ColumnName="SeasonName" />
+          <ScalarProperty Name="SeasonStartDate" ColumnName="SeasonStartDate" />
+          <ScalarProperty Name="SeasonEndDate" ColumnName="SeasonEndDate" />
+          <ScalarProperty Name="SeasonIsActive" ColumnName="SeasonIsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShipDesigns">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.ShipDesigns">
+        <MappingFragment StoreEntitySet="ShipDesigns">
+          <ScalarProperty Name="ShipDesignID" ColumnName="ShipDesignID" />
+          <ScalarProperty Name="ShipDesignName" ColumnName="ShipDesignName" />
+          <ScalarProperty Name="ShipDesignDescription" ColumnName="ShipDesignDescription" />
+          <ScalarProperty Name="ShipDesignIsActive" ColumnName="ShipDesignIsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShipRates">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.ShipRates">
+        <MappingFragment StoreEntitySet="ShipRates">
+          <ScalarProperty Name="ShipRateID" ColumnName="ShipRateID" />
+          <ScalarProperty Name="ShipRateName" ColumnName="ShipRateName" />
+          <ScalarProperty Name="ShipRateAdult" ColumnName="ShipRateAdult" />
+          <ScalarProperty Name="ShipRateFreeAdult" ColumnName="ShipRateFreeAdult" />
+          <ScalarProperty Name="ShipRateChildren" ColumnName="ShipRateChildren" />
+          <ScalarProperty Name="ShipRateFreeChildren" ColumnName="ShipRateFreeChildren" />
+          <ScalarProperty Name="ShipRateStudent" ColumnName="ShipRateStudent" />
+          <ScalarProperty Name="ShipRateStartDate" ColumnName="ShipRateStartDate" />
+          <ScalarProperty Name="ShipRateEndDate" ColumnName="ShipRateEndDate" />
+          <ScalarProperty Name="ShipRateIsActive" ColumnName="ShipRateIsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ships">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.Ships">
+        <MappingFragment StoreEntitySet="Ships">
+          <ScalarProperty Name="ShipID" ColumnName="ShipID" />
+          <ScalarProperty Name="FK_ShipDesignID" ColumnName="FK_ShipDesignID" />
+          <ScalarProperty Name="ShipName" ColumnName="ShipName" />
+          <ScalarProperty Name="ShipDescription" ColumnName="ShipDescription" />
+          <ScalarProperty Name="ShipMaxPassengers" ColumnName="ShipMaxPassengers" />
+          <ScalarProperty Name="ShipIsPublic" ColumnName="ShipIsPublic" />
+          <ScalarProperty Name="ShipPriority" ColumnName="ShipPriority" />
+          <ScalarProperty Name="ShipIsActive" ColumnName="ShipIsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplierRates">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.SupplierRates">
+        <MappingFragment StoreEntitySet="SupplierRates">
+          <ScalarProperty Name="FK_SupplierID" ColumnName="FK_SupplierID" />
+          <ScalarProperty Name="FK_ShipRateID" ColumnName="FK_ShipRateID" />
+          <ScalarProperty Name="FK_AccomodationRateID" ColumnName="FK_AccomodationRateID" />
+          <ScalarProperty Name="SupplierRateName" ColumnName="SupplierRateName" />
+          <ScalarProperty Name="SuplierRateIsActive" ColumnName="SuplierRateIsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.Suppliers">
+        <MappingFragment StoreEntitySet="Suppliers">
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="SupplierContactFirstName" ColumnName="SupplierContactFirstName" />
+          <ScalarProperty Name="SupplierContactLastName" ColumnName="SupplierContactLastName" />
+          <ScalarProperty Name="SupplierContactPhone" ColumnName="SupplierContactPhone" />
+          <ScalarProperty Name="SupplierSecondaryPhone" ColumnName="SupplierSecondaryPhone" />
+          <ScalarProperty Name="SupplierExtension" ColumnName="SupplierExtension" />
+          <ScalarProperty Name="SupplierEmail" ColumnName="SupplierEmail" />
+          <ScalarProperty Name="SupplierAddress" ColumnName="SupplierAddress" />
+          <ScalarProperty Name="SupplierCity" ColumnName="SupplierCity" />
+          <ScalarProperty Name="SupplierCountry" ColumnName="SupplierCountry" />
+          <ScalarProperty Name="SupplierPostalCode" ColumnName="SupplierPostalCode" />
+          <ScalarProperty Name="SupplierDescription" ColumnName="SupplierDescription" />
+          <ScalarProperty Name="SupplierIsActive" ColumnName="SupplierIsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="CroisiereEscoumins2020Model.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPasswordHash" ColumnName="UserPasswordHash" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
+          <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
+          <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+          <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+          <ScalarProperty Name="UserCountry" ColumnName="UserCountry" />
+          <ScalarProperty Name="UserPostalCode" ColumnName="UserPostalCode" />
+          <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+          <ScalarProperty Name="UserDescription" ColumnName="UserDescription" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="UserCreatedOn" ColumnName="UserCreatedOn" />
+          <ScalarProperty Name="UserIsActive" ColumnName="UserIsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

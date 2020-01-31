@@ -1,0 +1,66 @@
+
+<div class="page-header flex-wrap">
+  <h3 class="mb-0">
+    Tableau de bord <span class="pl-0 h6 pl-sm-2 text-muted d-inline-block">20 Juin 2020</span> <!--Data binding a mettre pour la date {{date}}-->
+  </h3>
+  <div class="d-flex">
+    <button type="button" class="btn btn-sm bg-white btn-icon-text border">
+      <i class="mdi mdi-email btn-icon-prepend"></i> Email
+    </button>
+    <button type="button" class="btn btn-sm bg-white btn-icon-text border ml-3">
+      <i class="mdi mdi-printer btn-icon-prepend"></i> Print
+    </button>
+    <button type="button" class="btn btn-sm ml-3 btn-success"> Ajouter reservation</button>
+  </div>
+</div>
+<!--Tableau de Bord-->
+<div class="row"></div>
+<div >
+
+  <div class="content-wrapper bg-white mt-4">
+    <h1 style="text-align: center" >{{NewDate | date:'dd MMM yyyy'}}</h1> <!--Date a mettre en databinding {{date}}-->
+    <div style="text-align: center">
+      
+     
+      <input type="date" [(ngModel)]="NewDate" name="changedate" (ngModelChange)="LoadDepartures()"/>
+     
+    </div>
+    <div clsss="wrapper">
+      <div class="row">
+        <div class="col-md-12">
+
+          <table class="table table-striped" *ngFor="let s of Ships"> <!--le tableau, tableau est un ngFor de chaque bateau en envoyant date-->
+
+            <thead>
+              <tr>
+                <th colspan="12" style="color: black; text-align: center">{{s.ShipName}}</th> <!-- Info a mettre en data binding pour le tableau-->
+              </tr>
+              <tr>
+                <th style="color: black"> Heure </th>
+                <th style="color: black"> Adulte </th>
+                <th style="color: black"> Enfant(12 ans-) </th>
+
+                <th style="color: black"> Etudiant</th>
+                <th style="color: black"> Gratuit</th>
+                <th style="color: black"> Place Disponible</th>
+                <th style="color: black"> Imprimer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let d of Departs"> <!--ngFor pour chaque depart sur les rows du tableau en envoyant date-->
+                <td>
+                  {{d.DepartureHour}}
+                </td>
+                <td> 10 </td>
+                <td>
+                  5
+                </td>
+                <td> 8 </td>
+
+                <td> 7 </td>
+                <td> 10/40 </td>
+                <td> <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-print"></i></button></td>
+              </tr>
+            
+            </tbody>
+          </table>

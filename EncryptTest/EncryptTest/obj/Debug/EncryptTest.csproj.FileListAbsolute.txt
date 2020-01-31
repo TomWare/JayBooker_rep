@@ -1,0 +1,7 @@
+C:\Users\1916526\source\repos\EncryptTest\EncryptTest\bin\Debug\EncryptTest.exe.config
+C:\Users\1916526\source\repos\EncryptTest\EncryptTest\bin\Debug\EncryptTest.exe
+C:\Users\1916526\source\repos\EncryptTest\EncryptTest\bin\Debug\EncryptTest.pdb
+C:\Users\1916526\source\repos\EncryptTest\EncryptTest\obj\Debug\EncryptTest.csprojAssemblyReference.cache
+C:\Users\1916526\source\repos\EncryptTest\EncryptTest\obj\Debug\EncryptTest.csproj.CoreCompileInputs.cache
+C:\Users\1916526\source\repos\EncryptTest\EncryptTest\obj\Debug\EncryptTest.exe
+C:\Users\1916526\source\repos\EncryptTest\EncryptTest\obj\Debug\EncryptTest.pdb

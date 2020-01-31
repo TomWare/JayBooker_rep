@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d1eda70f52ec463183c8065730e23415" Name="Diagram1">
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.AccomodationRates" Width="1.5" PointX="1.5" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.Accomodations" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.AccomodationTypes" Width="1.5" PointX="1.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.BookingHistory" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.Bookings" Width="1.5" PointX="6" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.Departures" Width="1.5" PointX="3.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.Emails" Width="1.5" PointX="8.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.EmailTemplates" Width="1.5" PointX="8.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.Guests" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.InvoicedBookings" Width="1.5" PointX="8.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.InvoicedProducts" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.Invoices" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.Logbook" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.Payments" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.Products" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.Seasons" Width="1.5" PointX="1.5" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.ShipDesigns" Width="1.5" PointX="1.5" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.ShipRates" Width="1.5" PointX="1.5" PointY="39.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.Ships" Width="1.5" PointX="1.5" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.SupplierRates" Width="1.5" PointX="3.75" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.Suppliers" Width="1.5" PointX="1.5" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.sysdiagrams" Width="1.5" PointX="8.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CroisiereEscoumins2020Model.Users" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_SupplierRates_AccomodationRates" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Accomodations_AccomodationTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Bookings_Accomodations" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_BookingHistory_Bookings" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_BookingHistory_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Bookings_Departures" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Bookings_Guests" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Bookings_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Emails_Bookings" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_InvoicedBookings_Bookings" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Departures_Seasons" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Departures_Ships" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Logbook_Departures" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Emails_Guests" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Emails_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Guests_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Invoices_Guests" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_InvoicedProducts_Invoices" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_InvoicedProducts_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Invoices_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Payments_Invoices" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Logbook_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Ships_ShipDesigns" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_SupplierRates_ShipRates" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_SupplierRates_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="CroisiereEscoumins2020Model.FK_Emails_EmailTemplates" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
